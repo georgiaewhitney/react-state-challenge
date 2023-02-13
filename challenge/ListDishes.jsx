@@ -1,10 +1,11 @@
 import dishes from "./data.js";
 
-function ListDishes() {
+function ListDishes({maxPrice}) {
   return (
-    <section aria-label="dishes">
         <ul className="grid">
-          {dishes.map((dish) => (
+          
+          {dishes.filter((dish) => dish.price <= maxPrice)
+          .map((dish) => (
             <li key={dish.id} className="card">
               <h3>{dish.name}</h3>
               {dish.description && <p>{dish.description}</p>}
@@ -12,7 +13,6 @@ function ListDishes() {
             </li>
           ))}
         </ul>
-      </section>
   )
 }
 
